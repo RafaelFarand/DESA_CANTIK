@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Desa Wukirsari</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0L20 10L10 20L0 10Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Menu Cards Section */
+        .menu-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5530;
+            margin-bottom: 60px;
+            font-weight: bold;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .dropdown-toggle {
+            background: #4a7c59;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .dropdown-toggle:hover {
+            background: #2c5530;
+            transform: translateY(-1px);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .dropdown-content.active {
+            max-height: 300px;
+            padding: 15px;
+        }
+
+        .dropdown-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            color: #2c5530;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>WEBSITE DESA</h1>
+            <h2>WUKIRSARI</h2>
+            <p>Portal informasi resmi Desa Wukirsari. Temukan berbagai layanan, informasi, dan berita terkini tentang desa kami.</p>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Layanan & Informasi</h2>
+            <div class="menu-grid">
+                <!-- Card 1: Sekretariat -->
+                <div class="menu-card">
+                    <img src="asset/sekretariat.png" alt="Sekretariat">
+                    <div class="card-content">
+                        <h3 class="card-title">SEKRETARIAT</h3>
+                        <p class="card-description">Informasi administrasi dan pelayanan sekretariat desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Surat Keterangan</div>
+                            <div class="dropdown-item">Administrasi Penduduk</div>
+                            <div class="dropdown-item">Pelayanan Umum</div>
+                            <div class="dropdown-item">Arsip Dokumen</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tata Laksana -->
+                <div class="menu-card">
+                    <img src ="asset/tata laksana.png" alt="Tata Laksana">
+                    <div class="card-content">
+                        <h3 class="card-title">TATA LAKSANA</h3>
+                        <p class="card-description">Prosedur dan tata cara pelayanan di desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">SOP Pelayanan</div>
+                            <div class="dropdown-item">Alur Pelayanan</div>
+                            <div class="dropdown-item">Persyaratan Dokumen</div>
+                            <div class="dropdown-item">Waktu Pelayanan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Profil Desa -->
+                <div class="menu-card">
+                    <img src="asset/danarta.png" alt="Danarta">
+                    <div class="card-content">
+                        <h3 class="card-title">DANARTA</h3>
+                        <p class="card-description">Sejarah, visi misi, dan profil lengkap desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Sejarah Desa</div>
+                            <div class="dropdown-item">Visi & Misi</div>
+                            <div class="dropdown-item">Geografi</div>
+                            <div class="dropdown-item">Demografi</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Pemerintahan -->
+                <div class="menu-card">
+                    <img src="asset/pangripta.png" alt="Pangripta">
+                    <div class="card-content">
+                        <h3 class="card-title">PANGRIPTA</h3>
+                        <p class="card-description">Struktur organisasi dan perangkat desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Struktur Organisasi</div>
+                            <div class="dropdown-item">Perangkat Desa</div>
+                            <div class="dropdown-item">Tugas & Fungsi</div>
+                            <div class="dropdown-item">Kontak Perangkat</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Keuangan -->
+                <div class="menu-card">
+                    <img src="asset/jagabaya.png" alt="Jagabaya">
+                    <div class="card-content">
+                        <h3 class="card-title">JAGABAYA</h3>
+                        <p class="card-description">Informasi anggaran dan keuangan desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">APBDes</div>
+                            <div class="dropdown-item">Laporan Keuangan</div>
+                            <div class="dropdown-item">Realisasi Anggaran</div>
+                            <div class="dropdown-item">Transparansi Dana</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Program -->
+                <div class="menu-card">
+                    <img src="asset/ulu ulu.png" alt="Ulu Ulu">
+                    <div class="card-content">
+                        <h3 class="card-title">ULU ULU</h3>
+                        <p class="card-description">Program pembangunan dan pemberdayaan masyarakat</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Program Unggulan</div>
+                            <div class="dropdown-item">Pemberdayaan Masyarakat</div>
+                            <div class="dropdown-item">Infrastruktur</div>
+                            <div class="dropdown-item">Program Sosial</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Berita -->
+                <div class="menu-card">
+                    <img src="asset/kamituwa.png" alt="Kamituwa">
+                    <div class="card-content">
+                        <h3 class="card-title">KAMITUWA</h3>
+                        <p class="card-description">Berita terkini dan pengumuman desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Berita Terbaru</div>
+                            <div class="dropdown-item">Pengumuman</div>
+                            <div class="dropdown-item">Kegiatan Desa</div>
+                            <div class="dropdown-item">Galeri Foto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Kontak -->
+                <div class="menu-card">
+                    <img src="asset/ppid.png" alt="PPID">
+                    <div class="card-content">
+                        <h3 class="card-title">PPID (Pejabat Pengelola Informasi & Dokumentasi)</h3>
+                        <p class="card-description">Informasi kontak dan lokasi kantor desa</p>
+                        <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                            Lihat Menu
+                            <span class="chevron">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">Alamat Kantor</div>
+                            <div class="dropdown-item">Nomor Telepon</div>
+                            <div class="dropdown-item">Email Resmi</div>
+                            <div class="dropdown-item">Media Sosial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleDropdown(button) {
+            const dropdown = button.nextElementSibling;
+            const chevron = button.querySelector('.chevron');
+            const isActive = dropdown.classList.contains('active');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.dropdown-content.active').forEach(dd => {
+                dd.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.chevron.rotated').forEach(ch => {
+                ch.classList.remove('rotated');
+            });
+            
+            // Toggle current dropdown
+            if (!isActive) {
+                dropdown.classList.add('active');
+                chevron.classList.add('rotated');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.menu-card')) {
+                document.querySelectorAll('.dropdown-content.active').forEach(dd => {
+                    dd.classList.remove('active');
+                });
+                document.querySelectorAll('.chevron.rotated').forEach(ch => {
+                    ch.classList.remove('rotated');
+                });
+            }
+        });
+
+        // Add smooth scroll animation on page load
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.menu-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
