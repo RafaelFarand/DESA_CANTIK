@@ -11,33 +11,92 @@
             background-color: #f8f9fa;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0L20 10L10 20L0 10Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>') repeat;
-            opacity: 0.3;
-        }
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(asset/merapi.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero-content-flex, .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+ /* Hero Section Flex and Logo */
+.hero-content-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 10px;
+}
+
+.hero-content-center {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .hero-content-flex {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .hero-logo {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Footer */
+.footer {
+    background: #2c5530;
+    color: #fff;
+    text-align: center;
+    padding: 32px 10px 18px 10px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    margin-top: 60px;
+}
+
+.footer a {
+    color: #e0ffe0;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.footer a:hover {
+    color: #b2f2b2;
+}
 
         .hero h1 {
             font-size: 4rem;
